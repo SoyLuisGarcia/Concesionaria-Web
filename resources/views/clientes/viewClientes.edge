@@ -1,0 +1,55 @@
+@layout('master')
+@section('content')
+    <div class="row">
+      <div class="col-md-8 ml-5">
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary" style="">Lista de Clientes</h6>
+          </div>
+          <div class="card-body">
+              <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Direccion</th>
+                      <th scope="col">telefono</th>
+                      <th scope="col">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      @each(client in clientes)
+                        <tr>
+                            <th >{{ client.id }} </th>
+                            <th > {{ client.nombre }} </th>
+                            <th > {{ client.direccion }} </th>
+                            <th > {{ client.telefono }} </th>
+                            <th>
+                                  <div class="btn-group" role="group" aria-label="Basic example">
+                                    <form action="clientes/delete/{{client.id}}" method="post">
+                                      {{ csrfField() }}
+                                      <a href="/clientes/edit-view/{{client.id}}" class="btn btn-secondary"><i class="fa fa-edit"></i></a>
+                                        <th class="th is-dark"><button class="btn btn-danger" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                        </button></th>
+                                    </form>
+                                  </div>
+                            </th>
+
+                        </tr>
+                      @endeach
+                  </tbody>
+                </table>
+
+              <div class="container mx-auto d-inline mt-5" style="width: 200px;">
+                      <a href="clientes/create" class="btn btn-primary  d-inline">Nuevo Cliente</a>
+                      <a href="/" class="btn btn-danger d-inline" >Regresar</a> <br>
+              </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+@endsection

@@ -1,0 +1,35 @@
+@layout('master')
+@section('content')
+<!-- DataTales Example -->
+<div class="row mt-3">
+  <div class="col-md-12">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary" style="">Modificar Cliente</h6>
+        </div>
+        <div class="card-body">
+
+
+            <div class="form-group mx-auto" style="width: 800px;" >
+                <form action="/clientes/edit/{{client.id}}" method="POST">
+                  {{ csrfField() }}
+                    <label for="" class="form-text text-muted"> </label>
+
+                    <label for="" class="form-text text-muted"> Nombre</label>
+                    <input value="{{client.nombre}}" name="nombre" type="text" class="form-control"> <br>
+                    <label for="" class="form-text text-muted"> Direccion </label>
+                    <input value="{{client.direccion}}" name="direccion" type="text" class="form-control"> <br>
+                    <label for="" class="form-text text-muted">  Telefono </label>
+                    <input value="{{client.telefono}}" name="telefono" type="text" class="form-control"> <br>
+                    <button type="submit" class="btn btn-success">Modificar Cliente</button>
+
+                    <a href="/clientes" class="btn btn-danger" >Regresar</a>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+  </div>
+</div>
+@endsection
